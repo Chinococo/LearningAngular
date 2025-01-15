@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {bootstrapApplication, Title} from '@angular/platform-browser';
-declare var $: any;
-declare var bootstrap:any;
+import $ from 'jquery';
+import { Modal as BootstrapModal } from 'bootstrap';
 @Component({
   selector: 'app-root',
   imports: [],
@@ -14,12 +14,16 @@ export class AppComponent implements OnInit{
     ngOnInit(): void {
       //元件初始化要加載的物件
       this.titleService.setTitle(this.title);
-      var myModal = new bootstrap.Modal(document.getElementById('modal'));
-      $("#SubmitButton").click(()=>{
-        ///alert("Hello World!");
-        console.log("Hello World!");
-        myModal.show();
-      });
-    }
 
+      // 初始化 Bootstrap 模态框
+      const modalElement = document.getElementById('modal');
+      if (modalElement) {
+        const myModal = new BootstrapModal(modalElement);
+        // 使用 jQuery 为按钮绑定事件
+        $('#SubmitButton').on('click', () => {
+          console.log("Hello World!");
+          myModal.show(); // 显示模态框
+        });
+      }
+    }
 }
