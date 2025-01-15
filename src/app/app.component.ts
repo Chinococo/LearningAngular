@@ -23,8 +23,10 @@ export class AppComponent implements OnInit{
         const myModal = new BootstrapModal(modalElement);
         // 使用 jQuery 为按钮绑定事件
         $('#SubmitButton').on('click', () => {
-          console.log("Hello World!");
-          myModal.show(); // 显示模态框
+          const value: string = $("#TodoDataInput").val() as string;
+          this.items.push(value);
+
+          //myModal.show(); // 显示模态框
         });
       }
     }
