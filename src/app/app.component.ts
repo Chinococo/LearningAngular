@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import {bootstrapApplication, Title} from '@angular/platform-browser';
 declare var $: any;
-
+declare var bootstrap:any;
 @Component({
   selector: 'app-root',
   imports: [],
@@ -10,14 +10,16 @@ declare var $: any;
 })
 export class AppComponent implements OnInit{
   constructor(private titleService: Title) {}
-  ngOnInit(): void {
-    //元件初始化要加載的物件
-    var title = 'LearningAngularTest';
-    this.titleService.setTitle(title);
-    $("#SubmitButton").click(()=>{
-      alert("Hello World!");
-      console.log("Hello World!");
-    });
-  }
+  title:any = "LearningAngular";
+    ngOnInit(): void {
+      //元件初始化要加載的物件
+      this.titleService.setTitle(this.title);
+      var myModal = new bootstrap.Modal(document.getElementById('modal'));
+      $("#SubmitButton").click(()=>{
+        ///alert("Hello World!");
+        console.log("Hello World!");
+        myModal.show();
+      });
+    }
 
 }
