@@ -22,7 +22,12 @@
 </div>
 <h1>This is a button</h1>
 <button id="SubmitButton">Click me</button>
-
+<h1>測試動態載入</h1>
+<ul>
+  <li *ngFor="let item of items; index as i">
+    {{ i + 1 }}. {{ item }}
+  </li>
+</ul>
 
 </body>
 
